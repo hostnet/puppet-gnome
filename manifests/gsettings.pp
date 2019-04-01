@@ -24,6 +24,7 @@ define gnome::gsettings(
       command => "dbus-launch gsettings set ${schema} ${key} ${value}",
       path    => '/usr/bin',
       user    => $user,
+      unless  => "dbus launch gsettings get ${schema} ${key} | grep -q \"${value}\"",
     }
   }
 }
