@@ -146,7 +146,7 @@ describe 'gnome::gsettings' do
 
     it do
       should contain_exec('change-org.rspec.testing-/desktop/gnome/rspec/testing').with({
-        'command' => "dbus-launch gsettings set org.rspec.testing /desktop/gnome/rspec/testing /usr/rspec/testing",
+        'command' => "gsettings set org.rspec.testing /desktop/gnome/rspec/testing /usr/rspec/testing",
         'path'    => '/usr/bin',
         'user'    => 'testuser',
       })
