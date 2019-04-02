@@ -147,7 +147,7 @@ describe 'gnome::gsettings' do
     it do
       should contain_exec('change-org.rspec.testing-/desktop/gnome/rspec/testing').with({
         'command' => "gsettings set org.rspec.testing /desktop/gnome/rspec/testing /usr/rspec/testing",
-        'path'    => '/usr/bin',
+        'path'    => ['/bin', '/usr/bin'],
         'user'    => 'testuser',
       })
     end

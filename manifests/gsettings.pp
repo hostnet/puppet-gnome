@@ -22,7 +22,7 @@ define gnome::gsettings(
   } else {
     exec { "change-${schema}-${key}":
       command => "gsettings set ${schema} ${key} ${value}",
-      path    => '/usr/bin',
+      path    => ['/bin', '/usr/bin'],
       user    => $user,
       unless  => "gsettings get ${schema} ${key} | grep -q \"${value}\"",
     }
