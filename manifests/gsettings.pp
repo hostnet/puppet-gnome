@@ -21,10 +21,10 @@ define gnome::gsettings(
     }
   } else {
     exec { "change-${schema}-${key}":
-      command => "gsettings set ${schema} ${key} ${value}",
+      command => "dbus-launch --exit-with-session gsettings set ${schema} ${key} ${value}",
       path    => ['/bin', '/usr/bin'],
       user    => $user,
-      unless  => "gsettings get ${schema} ${key} | grep -q \"${value}\"",
+      unless  => "dbus-launch --exit-with-session gsettings get ${schema} ${key} | grep -q \"${value}\"",
     }
   }
 }
