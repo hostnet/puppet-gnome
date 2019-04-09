@@ -21,7 +21,7 @@ define gnome::gsettings(
     }
   } else {
     exec { "change-${schema}-${key}":
-      command => "dbus-launch --exit-with-session gsettings set ${schema} ${key} ${value}",
+      command => "dbus-launch gsettings set ${schema} ${key} ${value}",
       path    => ['/bin', '/usr/bin'],
       user    => $user,
       unless  => "dbus-launch --exit-with-session gsettings get ${schema} ${key} | grep -q \"${value}\"",
